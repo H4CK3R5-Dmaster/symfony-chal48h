@@ -33,10 +33,9 @@ class Project
     #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-    }
+  
+
+   
 
     public function getId(): ?int
     {
@@ -87,27 +86,7 @@ class Project
         return $this->user;
     }
 
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getProject() === $this) {
-                $user->setProject(null);
-            }
-        }
-
-        return $this;
-    }
+    
 
     public function getVille(): ?string
     {
@@ -132,4 +111,8 @@ class Project
 
         return $this;
     }
+
+    
+
+    
 }
