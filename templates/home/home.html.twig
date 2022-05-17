@@ -4,7 +4,23 @@
 {% endblock %}
 
 {% block body %}
+	<div class="form-group">
+		{{form_start(formRecherche)}}
+		<div class="container">
+			{{form_widget(formRecherche.recherche,{
+				attr: {
+					placeholder:"Recherche..",
+					'class': 'form-control'
+				},
+				
+			
+        	})}}
+			<button type="submit" class="btn btn-primary mt-2">Rechercher</button>
+		</div>
 
+		{{form_end(formRecherche)}}
+
+	</div>
 
 	{% if allevent %}
 		{% for event in allevent %}

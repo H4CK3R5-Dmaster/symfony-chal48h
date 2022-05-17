@@ -1,6 +1,20 @@
-#easy_admin:
-#    entities:
-#        # List the entity class name you want to manage
-#        - App\Entity\Product
-#        - App\Entity\Category
-#        - App\Entity\User
+easy_admin:
+   site_name: "<b>BackOffice</b>"
+   design:
+    brand_color: "green"
+    menu:
+      - label: "Ecommerce"
+        icon: 'newspaper-o'
+        children:
+          - { entity: 'Project', icon: "folder-open", label: 'Project' }
+          - { entity: 'Categorie', icon: "folder-open", label: 'Categorie' }
+          - { entity: 'Participation', icon: "folder-open", label: 'Participation' }
+      - label: "ACCESS"
+        icon: 'user'
+        children:  
+          - { entity: 'User', icon: "folder-open", label: 'User' }  
+          - { entity: 'Contact', icon: "folder-open", label: 'Contact' }  
+          - { entity: 'Demande', icon: "folder-open", label: 'Demande' }  
+            
+imports:
+  - { resource: admin/ }  

@@ -1,0 +1,16 @@
+easy_admin:
+    entities:
+      Project:
+        class: App\Entity\Project
+        form:
+          fields:
+            - { property: 'nom' }
+            - { property: 'description' }
+            - { property: 'image' }
+            - { property: 'ville' }
+            - { property: 'createdAt' }
+            - { property: 'categorie' }
+        list:
+          actions:
+            - { name: 'edit', icon: 'pencil', label: false, css_class: "btn btn-primary"  }    
+            - { name: 'delete', icon: 'trash', label: false, css_class: "btn btn-danger"  } 

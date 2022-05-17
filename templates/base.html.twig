@@ -39,18 +39,18 @@
 				
 				{% if app.user %}
 					<div class="subnav">
-						<button class="subnavbtn">Devenir organisateur ?<i class="fa fa-caret-down"></i>
+						<button class="subnavbtn">Options<i class="fa fa-caret-down"></i>
 						</button>
 						<div class="subnav-content">
 							<div id="subnav-trapezoid">
-								
+								<a href="{{ path('app_contact') }}">Contact</a>
 								<a href="{{path('app_organisation')}}">Etre organisateur</a>
 							</div>
 						</div>
 					</div>
 
 				{% endif %}
-				<a class="expandHome" href="{{ path('app_contact') }}">Contact</a>
+				
 				{# <div class="subnav">
 																	<button class="subnavbtn">Services<i class="fa fa-caret-down"></i>
 																	</button>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Form\RechercheType;
 use Doctrine\ORM\EntityManager;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,15 +25,24 @@ class HomeController extends AbstractController
         ]);
     }
     #[Route('/home', name: 'home')]
-    public function home(ParticipationRepository $part): Response
+    public function home(ProjectRepository $part,Request $request): Response
     {
         
-        $ok = $part->findAll();
         
+        $form = $this->createForm(RechercheType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->get('recherche')->getData();
+            $ok = $part->getProjectByname($data);
+        } else {
+            $ok = $part->findAll();
+        }
 
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
-            'allevent' => $ok
+            'allevent' => $ok,
+            'formRecherche' => $form->createView()
         ]);
     }
 

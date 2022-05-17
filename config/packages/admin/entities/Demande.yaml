@@ -1,0 +1,14 @@
+easy_admin:
+    entities:
+      Demande:
+        class: App\Entity\Demande
+        form:
+          fields:
+            - { property: 'user' }
+            - { property: 'content' }
+            - { property: 'validornot' }
+            - { property: 'createdAt' }
+        list:
+          actions:
+            - { name: 'edit', icon: 'pencil', label: false, css_class: "btn btn-primary"  }    
+            - { name: 'delete', icon: 'trash', label: false, css_class: "btn btn-danger"  } 

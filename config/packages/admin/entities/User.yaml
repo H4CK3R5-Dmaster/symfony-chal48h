@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+      User:
+        class: App\Entity\User
+        password_encoding: { algorithm: 'bcrypt', cost: 12 }
+        form:
+          fields:
+            - { property: 'email' }
+            - { property: 'nom' }
+            - { property: 'prenom' }
+            - { property: 'password', type: "password" }
+            - { property: 'roles', type: "collection" }
+            - { property: 'numeros' }
+            - { property: 'username' }
+            - { property: 'createdAt' }
+        list:
+          actions:
+            - { name: 'edit', icon: 'pencil', label: false, css_class: "btn btn-primary"  }    
+            - { name: 'delete', icon: 'trash', label: false, css_class: "btn btn-danger"  } 
