@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Contact</title>
+		<link rel="stylesheet" href="/css/style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		{% for message in app.flashes('success')%}
+			<div class="alert alert-success text-center">{{message}}</div>
+		{% endfor %}
+		<div id="bg">
+			<div class="module">
+				<ul>
+					<li class="tab activeTab">
+						<i class="fas fa-address-book"></i>
+					</li>
+
+				</ul>
+
+
+				<div class="form">
+
+					<div class="row">
+						<div class="col-md-6">
+							{{ form_start(formContact) }}
+							{{ form_row(formContact.nom,{'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="col-md-6">
+							{{ form_start(formContact) }}
+							{{ form_row(formContact.prenom) }}
+						</div>
+					</div>
+
+
+					{{ form_row(formContact.email) }}
+					{{ form_row(formContact.content) }}
+
+
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+					{{ form_end(formContact) }}
+
+				</div>
+
+			</div>
+		</div>
+
+
+	</body>
 </html>

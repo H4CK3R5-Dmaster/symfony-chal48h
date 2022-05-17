@@ -2,11 +2,17 @@
 
 namespace App\Controller;
 
-use App\Repository\ParticipationRepository;
+use App\Entity\Contact;
+use App\Form\ContactType;
+use Doctrine\ORM\EntityManager;
 use App\Repository\ProjectRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Notification\ContactNotification;
+use App\Repository\ParticipationRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -32,10 +38,24 @@ class HomeController extends AbstractController
 
 
     #[Route('/contact', name: 'app_contact')]
-    public function contact(): Response
+    public function contact(Request $rq, EntityManagerInterface $manager, ContactNotification $cn): Response
     {
+        $contact =new Contact;
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($rq);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setCreatedAt(new \DateTime());
+            $manager->persist($contact);
+            $manager->flush();
+            $cn->notify($contact);
+            $this->addFlash('success', "message envoyé avec succès !");
+            return $this->redirectToRoute('home');
+        }
+        
         return $this->render('home/contact.html.twig', [
             'controller_name' => 'HomeController',
+            'formContact' => $form->createView()
             
         ]);
     }

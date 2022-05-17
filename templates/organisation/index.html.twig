@@ -1,9 +1,21 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Etre organisateur{% endblock %}
+{% block title %}Etre organisateur
+{% endblock %}
 
 {% block body %}
 
-    ok
+	<div class="container ">
+		<div class="form-control">
+			{{form_start(formDemande)}}
+			{{form_row(formDemande.content,{
+                label: "Votre mini CV !"
+            })}}
+			<button class="btn btn-primary">Envoyer</button>
+			{{form_end(formDemande)}}
+		</div>
+
+
+	</div>
 
 {% endblock %}

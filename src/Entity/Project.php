@@ -36,6 +36,9 @@ class Project
     #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Participation::class)]
     private $participation;
 
+    #[ORM\ManyToOne(targetEntity: Categorie::class)]
+    private $categorie;
+
     public function __construct()
     {
         $this->participation = new ArrayCollection();
@@ -126,6 +129,18 @@ class Project
     public function getParticipation(): Collection
     {
         return $this->participation;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
     }
 
     
