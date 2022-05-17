@@ -33,6 +33,14 @@ class Project
     #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
+    #[ORM\OneToMany(mappedBy: 'projects', targetEntity: Participation::class)]
+    private $participation;
+
+    public function __construct()
+    {
+        $this->participation = new ArrayCollection();
+    }
+
   
 
    
@@ -111,6 +119,18 @@ class Project
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Participation>
+     */
+    public function getParticipation(): Collection
+    {
+        return $this->participation;
+    }
+
+    
+
+    
 
     
 

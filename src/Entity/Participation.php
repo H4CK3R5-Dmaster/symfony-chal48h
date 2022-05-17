@@ -19,6 +19,8 @@ class Participation
     #[ORM\ManyToOne(targetEntity: Project::class)]
     private $project;
 
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,4 +49,6 @@ class Participation
 
         return $this;
     }
+
+   
 }
