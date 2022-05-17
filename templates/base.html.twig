@@ -44,12 +44,25 @@
 						<div class="subnav-content">
 							<div id="subnav-trapezoid">
 								<a href="{{ path('app_contact') }}">Contact</a>
-								<a href="{{path('app_organisation')}}">Etre organisateur</a>
+								{% if is_granted('ROLE_ORGANISATION') == false %}
+									<a href="{{path('app_organisation')}}">Etre organisateur</a>
+								
+								{% endif %}
+								{% if is_granted('ROLE_ORGANISATION') %}
+								
+									<a href="#">Créer un evenement</a>
+								{% endif %}
+								
 							</div>
 						</div>
 					</div>
 
 				{% endif %}
+				{% if app.user %}
+					<a class="expandHome" href="#">participation</a>
+				
+				{% endif %}
+				
 				
 				{# <div class="subnav">
 																	<button class="subnavbtn">Services<i class="fa fa-caret-down"></i>

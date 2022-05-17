@@ -34,11 +34,11 @@
 									<svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path/></svg>
 
 									<div class="card__header-text">
-										<h3 class="card__title">Jessica Parker</h3>
-										<span class="card__status">1 hour ago</span>
+										<h3 class="card__title">{{event.nom}}</h3>
+										<span class="card__status">{{event.createdAt | date('d/m/Y à H:i:s')}} catégorie = {{event.categorie}}</span>
 									</div>
 								</div>
-								<p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+								<p class="card__description">{{event.description}}</p>
 							</div>
 						</a>
 					</li>

@@ -3,7 +3,7 @@ easy_admin:
    design:
     brand_color: "green"
     menu:
-      - label: "Ecommerce"
+      - label: "EventCrud"
         icon: 'newspaper-o'
         children:
           - { entity: 'Project', icon: "folder-open", label: 'Project' }
